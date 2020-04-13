@@ -23,7 +23,7 @@ import {
   faPhone,
   faSearch,
   faMapMarkerAlt,
-  faHome,
+  faHome
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,

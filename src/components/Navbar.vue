@@ -1,19 +1,13 @@
 <template>
   <div id="navbar">
     <b-navbar toggleable="lg">
-      <!-- <b-navbar-brand>
-    <font-awesome-icon icon="route"></font-awesome-icon>
-    </b-navbar-brand> -->
+      <b-navbar-brand href="/">
+        <b-img src="../logo@0,2x.png" alt="Responsive image"></b-img>
+      </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav pills>
-
-          <b-nav-item href="#">
-            <font-awesome-icon icon="home"></font-awesome-icon>
-            JUST-GO</b-nav-item
-          > 
-
           <b-nav-item href="/"
             ><font-awesome-icon icon="plane-departure"></font-awesome-icon>
             Flights</b-nav-item

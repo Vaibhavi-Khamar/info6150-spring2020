@@ -11,37 +11,6 @@
 <script>
 export default {
   name: "Modal"
-  // data() {
-  //   return {
-  //     fields: ["nuid", "name", "badge"],
-  //     members: [
-  //       {
-  //         nuid: "1492338",
-  //         name: "Ziyu Zhou",
-  //         type: "danger",
-  //         text: "Danger"
-  //       },
-  //       {
-  //         nuid: "1400149",
-  //         name: "Vaibhavi Khamar",
-  //         type: "success",
-  //         text: "Danger"
-  //       },
-  //       {
-  //         nuid: "1472783",
-  //         name: "Mengqi Wang",
-  //         type: "success",
-  //         text: "Environmentally friendly"
-  //       },
-  //       {
-  //         nuid: "1306506",
-  //         name: "Devina Jaiswal",
-  //         type: "success",
-  //         text: "Danger"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 <style>

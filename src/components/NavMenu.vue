@@ -15,11 +15,11 @@
           fit="contain"
         ></el-image
       ></el-menu-item>
-      <el-menu-item index="/destinations">
+      <!-- <el-menu-item index="/destinations">
         <span slot="title">
           <font-awesome-icon icon="map-marker-alt" />&emsp;Destinations</span
         ></el-menu-item
-      >
+      > -->
       <el-menu-item index="/flights">
         <span slot="title">
           <font-awesome-icon icon="plane-departure" />&emsp;Flights</span
@@ -63,6 +63,7 @@
           ><font-awesome-icon icon="user-alt" />&emsp;User</template
         >
         <el-menu-item v-show="f1" index="/profile">Profile</el-menu-item>
+        <el-menu-item v-show="f1" index="/orders">Orders</el-menu-item>
         <el-menu-item v-show="!f1" index="/sign-in">Sign In</el-menu-item>
         <el-menu-item v-show="f1" @click="signOut()">Sign out</el-menu-item>
       </el-submenu>

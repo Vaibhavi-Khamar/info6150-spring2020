@@ -44,37 +44,37 @@ const routes = [
   },
   {
     path: "/Sydney",
-    name: "Flights",
+    name: "Sydney",
     component: () => import("../views/Australia.vue")
   },
   {
     path: "/London",
-    name: "Flights",
+    name: "London",
     component: () => import("../views/London.vue")
   },
   {
     path: "/Paris",
-    name: "Flights",
+    name: "Paris",
     component: () => import("../views/Paris.vue")
   },
   {
     path: "/Shanghai",
-    name: "Flights",
+    name: "Shanghai",
     component: () => import("../views/Shanghai.vue")
   },
   {
     path: "/Chengdu",
-    name: "Flights",
+    name: "Chengdu",
     component: () => import("../views/Chengdu.vue")
   },
   {
     path: "/Mumbai",
-    name: "Flights",
+    name: "Mumbai",
     component: () => import("../views/Mumbai.vue")
   },
   {
     path: "/Hotels",
-    name: "Flights",
+    name: "Hotels",
     component: () => import("../views/Hotels.vue")
   },
   {

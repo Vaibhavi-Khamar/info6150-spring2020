@@ -1,104 +1,115 @@
 <template>
-<div>
+  <div>
     <el-container>
-    <el-main >
-    <el-row>
-    <h1>Your Profile</h1>
-    </el-row>
-    <el-row class="list">
-    <p>NAME</p>
-    </el-row>
-    <el-row>
-    <el-input :disabled="flag" v-model="json.name"></el-input>
-    </el-row>
-    <el-row class="list">
-    <p>USERNAME</p>
-    </el-row>
-    <el-row>
-    <el-input :disabled="flag" v-model="json.username"></el-input>
-    </el-row>
-    <el-row class="list">
-    <p>EMAIL</p>
-    </el-row>
-    <el-row>
-    <el-input :disabled="flag" v-model="json.email"></el-input>
-    </el-row>
-    <el-row class="list">
-    <p>CURRENT CITY</p>
-    </el-row>
-    <el-row>
-    <el-input :disabled="flag" v-model="json.city"></el-input>
-    </el-row>
-    <el-row class="list">
-    <p>ABOUT YOU</p>
-    </el-row> 
-    <el-row>
-    <el-input :disabled="flag" v-model="json.about"></el-input>
-    </el-row>
-    <!-- USERID: <el-input :disabled="flag" v-model="json.userid"></el-input> -->
+      <el-main>
+        <el-row>
+          <h1>Your Profile</h1>
+        </el-row>
+        <el-row class="list">
+          <p>NAME</p>
+        </el-row>
+        <el-row>
+          <el-input :disabled="flag" v-model="json.name"></el-input>
+        </el-row>
+        <el-row class="list">
+          <p>USERNAME</p>
+        </el-row>
+        <el-row>
+          <el-input :disabled="true" v-model="json.username"></el-input>
+        </el-row>
+        <el-row class="list">
+          <p>EMAIL</p>
+        </el-row>
+        <el-row>
+          <el-input :disabled="flag" v-model="json.email"></el-input>
+        </el-row>
+        <el-row class="list">
+          <p>CURRENT CITY</p>
+        </el-row>
+        <el-row>
+          <el-input :disabled="flag" v-model="json.city"></el-input>
+        </el-row>
+        <el-row class="list">
+          <p>ABOUT YOU</p>
+        </el-row>
+        <el-row>
+          <el-input :disabled="flag" v-model="json.about"></el-input>
+        </el-row>
+        <!-- USERID: <el-input :disabled="flag" v-model="json.userid"></el-input> -->
 
-
-    <el-row class="wow">  
-        <el-button type="primary" v-show= "flag" @click="editProfile">Edit Profile</el-button> 
-        <el-button type="success" v-show= "!flag" @click="profile" >Update</el-button> 
-        <el-button type="warning" v-show= "!flag" @click="getJson">Cancel</el-button>       
-    </el-row>
-  </el-main>
+        <el-row class="wow">
+          <el-button type="primary" v-show="flag" @click="editProfile"
+            >Edit Profile</el-button
+          >
+          <el-button type="success" v-show="!flag" @click="profile"
+            >Update</el-button
+          >
+          <el-button type="warning" v-show="!flag" @click="refresh"
+            >Cancel</el-button
+          >
+        </el-row>
+      </el-main>
     </el-container>
   </div>
 </template>
 
-
 <script>
-
 export default {
   data() {
     return {
       json: {},
-      flag: true    
+      flag: true
     };
   },
   mounted() {
     this.getJson();
     //this.profile();
   },
-  
+
   methods: {
-    editProfile(){
-      this.flag = !this.flag
+    editProfile() {
+      this.flag = !this.flag;
     },
     profile() {
-      this.flag = !this.flag
+      this.flag = !this.flag;
       this.$axiosUtil
         .put("back/profile/", {
-
           name: this.json.name,
           email: this.json.email,
-	        city:this.json.city,
-          about:this.json.about
-          
+          city: this.json.city,
+          about: this.json.about,
+          username: this.json.username
+
           // userid: 6,
           // username:"zoe",
           // email: "email",
-	        // city:"city",
-          // about:"about"    
+          // city:"city",
+          // about:"about"
         })
-        .then(response => {
-          console.log(response.data);
-          this.json = response.data;
+        .then( ()=> {
+          this.getJson()
         });
-        this.getJson();
+      // this.refresh()
     },
     getJson() {
-      this.flag = true
+      this.flag = true;
       this.$axiosUtil
         .get("back/profile/", {
-          userid: "1"
+          userid: this.$store.getters.getId
         })
-        .then(response => {
-          console.log(response.data);
-          this.json = response.data;
-        });
+        .then(
+          res => {
+            this.json = res.data;
+          },
+          rej => {
+            console.log(rej)
+            this.json = {};
+            this.json.username = this.$store.getters.getUsername;
+          }
+        );
+    },
+    refresh(){
+      this.$router.push("/profile");
     }
   }
 };
@@ -111,21 +122,21 @@ export default {
 h1 {
   color: #00a896;
   font-size: 300%;
-  margin:10px;
+  margin: 10px;
 }
 
-.list{
+.list {
   text-align: left;
 }
 .wow {
-  padding: 25px
+  padding: 25px;
 }
-.el-card  {
+.el-card {
   background-color: white !important;
-  color:  #00a896;
+  color: #00a896;
   text-align: center;
 }
-.el-main  {
+.el-main {
   /* border-radius: 15px; */
   /* background-clip: padding-box;
   margin: 3% auto; */

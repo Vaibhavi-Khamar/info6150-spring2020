@@ -45,7 +45,7 @@
       </el-row>
       <el-divider></el-divider>
       <div>
-        {{ orderData.price }}
+        ${{ orderData.price }}
       </div>
     </el-card>
   </el-col>

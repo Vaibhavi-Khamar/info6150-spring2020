@@ -66,13 +66,23 @@
     <el-row type="flex" class="row-bg" justify="center">
       <el-col :span="16"
         ><div class="grid-content title5">
-          <el-button type="primary" round
+          <el-button type="primary" round @click="toFlights('LHR')"
             >Go Search Flights <i class="el-icon-arrow-right"></i
           ></el-button></div
       ></el-col>
     </el-row>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    toFlights(code) {
+      console.log(code);
+      this.$router.push("/flights?destination=" + code);
+    }
+  }
+};
+</script>
 
 <style scoped>
 .all {

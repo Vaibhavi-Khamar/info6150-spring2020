@@ -70,6 +70,7 @@ export default {
                 message: "Order " + no + " confirmed!",
                 type: "success"
               });
+              this.$router.push("/orders");
             },
             rej => {
               if (rej.response.status == 400) {

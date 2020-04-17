@@ -36,9 +36,7 @@ export default {
           userId: this.$store.getters.getId
         })
         .then(response => {
-          console.log(response.data);
           this.json = response.data;
-          console.log(Object.keys(this.json));
         });
     }
   }

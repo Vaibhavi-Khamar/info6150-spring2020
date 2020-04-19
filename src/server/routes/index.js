@@ -22,4 +22,8 @@ router.get('/json', async (ctx, next) => {
   }
 })
 
-module.exports = router
+router.use('/user', require('./user'));
+router.use('/order', require('./order'));
+router.use('/profile', require('./profile'));
+
+module.exports = router;

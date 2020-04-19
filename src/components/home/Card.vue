@@ -11,7 +11,11 @@
     </div>
     <div class="card-body">
       {{ title }}
-      <i class="el-icon-arrow-right" style="float: right"></i>
+      <i
+        class="el-icon-arrow-right"
+        style="float: right"
+        @click="ToPackage()"
+      ></i>
     </div>
   </el-card>
 </template>
@@ -20,6 +24,11 @@ export default {
   props: ["imgSrc", "title", "text"],
   data() {
     return {};
+  },
+  methods: {
+    ToPackage: function() {
+      this.$router.push("/" + this.title);
+    }
   }
 };
 </script>

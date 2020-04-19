@@ -30,12 +30,60 @@ const routes = [
   {
     path: "/sign-in",
     name: "Sign In",
-    component: () => import("../components/user/SignIn.vue")
+    component: () => import("../views/SignIn.vue")
   },
   {
     path: "/profile",
     name: "Profile",
-    component: () => import("../components/user/Profile.vue")
+    component: () => import("../views/Profile.vue")
+  },
+  {
+    path: "/order",
+    name: "Order",
+    component: () => import("../views/Order.vue")
+  },
+  {
+    path: "/Sydney",
+    name: "Sydney",
+    component: () => import("../views/Australia.vue")
+  },
+  {
+    path: "/London",
+    name: "London",
+    component: () => import("../views/London.vue")
+  },
+  {
+    path: "/Paris",
+    name: "Paris",
+    component: () => import("../views/Paris.vue")
+  },
+  {
+    path: "/Shanghai",
+    name: "Shanghai",
+    component: () => import("../views/Shanghai.vue")
+  },
+  {
+    path: "/Chengdu",
+    name: "Chengdu",
+    component: () => import("../views/Chengdu.vue")
+  },
+  {
+    path: "/Mumbai",
+    name: "Mumbai",
+    component: () => import("../views/Mumbai.vue")
+  },
+  {
+    path: "/Hotels",
+    name: "Hotels",
+    component: () => import("../views/Hotels.vue")
+  },
+  {
+    path: "/orders",
+    name: "Orders",
+    component: () => import("../views/Orders.vue"),
+    meta: {
+      requireAuth: true
+    }
   }
 ];
 

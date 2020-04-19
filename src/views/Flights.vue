@@ -1,47 +1,66 @@
 <template>
-  <div class="flights">
-    <b-row>
-      <b-col>
-        Airline
-      </b-col>
-      <b-col>
-        Flight Number
-      </b-col>
-      <b-col>
-        Price
-      </b-col>
-    </b-row>
-    <b-container v-for="(items, index) in json" :key="index">
-      {{ index }}
-      <b-row v-for="(item, index) in items" :key="index">
-        <b-col>
-          {{ item.airline }}
-        </b-col>
-        <b-col>
-          {{ item.flight_number }}
-        </b-col>
-        <b-col>
-          {{ item.price }}
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+  <el-container>
+    <el-header>
+      <Title />
+    </el-header>
+    <el-main>
+      <el-row>
+        <el-col :span="9" :offset="1">
+          <el-input v-model="origin" placeholder="From"></el-input>
+        </el-col>
+        <el-col :span="9" :offset="1">
+          <el-input v-model="destination" placeholder="To"></el-input>
+        </el-col>
+        <el-col :span="1" :offset="1">
+          <el-button type="primary" icon="el-icon-search" @click="getJson"
+            >Search</el-button
+          >
+        </el-col>
+      </el-row>
+      <div class="results"></div>
+      <div v-for="(item, key, index) in json" :key="index">
+        <div v-for="(value, index) in item" :key="index">
+          <el-row>
+            <Card :flightData="value" :origin="origin" :destination="key" />
+          </el-row>
+        </div>
+      </div>
+    </el-main>
+  </el-container>
 </template>
 <script>
+import Title from "@/components/flights/Title.vue";
+import Card from "@/components/flights/Card.vue";
 export default {
+  components: {
+    Title,
+    Card
+  },
   data() {
     return {
-      json: {}
+      origin: "",
+      destination: "",
+      json: {
+        // "1": {
+        //   price: 107,
+        //   airline: "NK",
+        //   flight_number: 641,
+        //   departure_at: "2020-06-10T17:30:00Z",
+        //   return_at: "2020-06-27T10:42:00Z",
+        //   expires_at: "2020-04-20T04:31:48Z"
+        // }
+      }
     };
   },
   mounted() {
-    this.getJson();
+    this.destination = this.$route.query.destination;
   },
   methods: {
     getJson() {
       this.$axiosUtil
         .get("api/v1/prices/cheap", {
-          origin: "BOS",
+          origin: this.origin,
+          destination: this.destination,
           token: "ee5e3a59b78d121e99fd83e4420d6ccd",
           page: "1",
           currency: "USD"
@@ -54,3 +73,12 @@ export default {
   }
 };
 </script>
+<style scoped>
+.results {
+  margin-top: 20px;
+}
+.el-row {
+  margin-top: 2px;
+  border-radius: 4px;
+}
+</style>

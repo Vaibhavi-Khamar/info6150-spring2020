@@ -5,6 +5,9 @@ var userController = {
   },
   addUser: (body) => {
     return userDb.addUser(body.username, body.email, body.password);
+  },
+  searchUser:(body) => {
+    return userDb.searchUser(body.username, body.password);
   }
 };
 module.exports = userController;

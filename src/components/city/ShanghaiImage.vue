@@ -1,5 +1,9 @@
 <template>
-  <el-carousel :height="carouselHeight + 'px'" indicator-position="none">
+  <el-carousel
+    :height="carouselHeight + 'px'"
+    direction="vertical"
+    arrow="always"
+  >
     <el-carousel-item
       v-for="(item, index) in items"
       :key="index"
@@ -30,7 +34,7 @@ export default {
       this.carouselHeight = (1 / 3) * this.screenWidth;
     },
     loadJson() {
-      this.items = require("@/static/home/carousel-items");
+      this.items = require("@/static/city/Shanghai");
     }
   },
   mounted() {

@@ -99,9 +99,14 @@ export default {
               message: "Sign in Success!",
               type: "success"
             });
-            this.$store.dispatch("SignIn",{ id: res.data.id, username: this.userdata.username}).then(() => {
-              this.$router.push("/");
-            });
+            this.$store
+              .dispatch("SignIn", {
+                id: res.data.id,
+                username: this.userdata.username
+              })
+              .then(() => {
+                this.$router.push("/");
+              });
           },
           rej => {
             if (rej.response.status == 400) {

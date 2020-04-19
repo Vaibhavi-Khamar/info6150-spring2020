@@ -34,7 +34,7 @@ export default {
       this.carouselHeight = (1 / 3) * this.screenWidth;
     },
     loadJson() {
-      this.items = require("@/static/city/London");
+      this.items = require("@/static/city/Paris");
     }
   },
   mounted() {

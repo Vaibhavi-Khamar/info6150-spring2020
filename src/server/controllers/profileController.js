@@ -7,7 +7,7 @@ var profileController = {
     return profileDb.searchProfile(userid);
   },
   editProfile:(body) => {
-    return profileDb.editProfile(body.name, body.email, body.city, body.about);
+    return profileDb.editProfile(body.name, body.email, body.city, body.about, body.username);
   }
 };
 module.exports = profileController;

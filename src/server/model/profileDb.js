@@ -19,10 +19,10 @@ var profileDb = {
       });
     });
   },
-  editProfile: (name,email, city, about) => {
+  editProfile: (name,email, city, about, username) => {
     return new Promise((resolved, rejected) => {
-      const sql = "UPDATE `profile` SET name=?, email=?, city=?, about=?";
-      const params = [name,email, city, about];
+      const sql = "UPDATE `profile` SET name=?, email=?, city=?, about=? WHERE username=?";
+      const params = [name,email, city, about, username];
       console.log(params)
 
       pool.query(sql, params, function(err) {
@@ -44,10 +44,10 @@ var profileDb = {
       pool.query(sql, params, function(err, results) {      
         if (err) {
           console.log(err);
-          resolved(400);
+          resolved([400, "ERR"]);
         } 
         else if (Object.keys(results).length == 0) {
-          resolved(404);
+          resolved([404, "NO DATA"]);
         } else {      
           console.log(results)
           console.log("GET USER PROFILE: " );

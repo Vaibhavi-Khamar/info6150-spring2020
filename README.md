@@ -1,4 +1,5 @@
 # info6150-spring2020
+# JustGO Travelling Website
 
 ## Project setup
 
